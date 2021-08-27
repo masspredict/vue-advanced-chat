@@ -579,23 +579,7 @@ export default {
 		},
 		onMessageAdded({ message, index, ref }) {
 			if (index !== this.messages.length - 1) return
-
-			const autoScrollOffset = ref.offsetHeight + 60
-
-			setTimeout(() => {
-				if (
-					this.getBottomScroll(this.$refs.scrollContainer) < autoScrollOffset
-				) {
-					this.scrollToBottom()
-				} else {
-					if (message.senderId === this.currentUserId) {
-						this.scrollToBottom()
-					} else {
-						this.scrollIcon = true
-						this.scrollMessagesCount++
-					}
-				}
-			})
+			setTimeout(() => { this.scrollToBottom() })
 		},
 		onContainerScroll(e) {
 			this.hideOptions = true
